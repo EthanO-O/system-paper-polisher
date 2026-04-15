@@ -19,7 +19,7 @@ Multi-agent iterative review and improvement with story-driven coherence checkin
 |---------|-------------|
 | `polish` | Full pipeline: polish → compress → check-citations → check-submission |
 | `polish-section` | Polish a specific section |
-| `polish-full` | Iterative full-paper polishing |
+| `polish-paper` | Iterative full-paper polishing |
 | `compress` | Compress content to meet page limits |
 | `check-citations` | Verify citations, generate verification checklist |
 | `check-submission` | Final compliance check against conference requirements |

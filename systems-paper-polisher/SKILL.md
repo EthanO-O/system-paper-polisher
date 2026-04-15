@@ -39,7 +39,7 @@ Every command begins by establishing the target conference (if not already known
 
 Runs the complete polishing pipeline in sequence:
 ```
-1. polish-full      → Iterative full-paper polishing
+1. polish-paper      → Iterative full-paper polishing
 2. compress         → Compress to target page count (if needed)
 3. check-citations  → Generate citation verification checklist
 4. check-submission → Final compliance check against conference requirements
@@ -64,7 +64,7 @@ Polish a specific section through the full review→improve cycle. Read `agents/
 4. **Phase 2** — Run improvement-agent to produce revised text
 5. User reviews. If "iterate", loop back to Phase 1 with revised text
 
-#### `polish-full` — "润色全文" / "polish the full paper"
+#### `polish-paper` — "润色全文" / "polish the full paper"
 
 Full-paper iterative polishing. Read `references/story-coherence-guide.md` for the coherence framework.
 
