@@ -1,0 +1,359 @@
+%%
+%% ACM sigconf template for systems conferences (SOSP, ASPLOS, EuroSys).
+%%
+%% Submission mode: anonymous,review
+%% Camera-ready: remove anonymous,review and fill in the \acm* rights block
+%%               provided by ACM after acceptance.
+%%
+
+%% --- For submission (double-blind) ---
+\documentclass[sigconf,anonymous,review]{acmart}
+
+%% --- For camera-ready (uncomment and fill in after acceptance) ---
+%\documentclass[sigconf]{acmart}
+%\setcopyright{acmcopyright}
+%\copyrightyear{2025}
+%\acmYear{2025}
+%\acmDOI{10.1145/XXXXXXX.XXXXXXX}
+%\acmConference[EuroSys '25]{...}{...}{...}
+%\acmBooktitle{...}
+%\acmISBN{978-1-4503-XXXX-X/25/XX}
+
+%% ============================================================
+%% Packages
+%% ============================================================
+\usepackage{booktabs}    % Professional tables (\toprule, \midrule, \bottomrule)
+\usepackage{graphicx}    % \includegraphics
+\usepackage{subcaption}  % Subfigures
+\usepackage{listings}    % Code listings
+\usepackage{xspace}      % Smart spacing after macros
+\usepackage{microtype}   % Better text justification
+\usepackage{balance}     % Balance last page columns
+
+%% ============================================================
+%% Custom macros — define your system name once, use everywhere
+%% ============================================================
+\newcommand{\sysname}{SysName\xspace}   % Replace with your system's name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+%% ============================================================
+%% Bibliography
+%% ============================================================
+\bibliographystyle{ACM-Reference-Format}
+%% Use \cite{key} in text; put entries in references.bib
+
+%%
+%% ============================================================
+\begin{document}
+
+%% ============================================================
+%% Title — anonymized for submission; restore authors for camera-ready
+%% ============================================================
+\title{\sysname: A [Noun Phrase Capturing Your Key Contribution]}
+
+%% Submission: leave \author{} empty (anonymous mode handles it)
+%% Camera-ready: fill in author names and affiliations
+\author{Author One}
+\affiliation{%
+  \institution{Institution}
+  \city{City}
+  \country{Country}
+}
+\email{author1@example.com}
+
+\author{Author Two}
+\affiliation{%
+  \institution{Institution}
+  \city{City}
+  \country{Country}
+}
+\email{author2@example.com}
+
+%% ============================================================
+%% Abstract
+%% ============================================================
+\begin{abstract}
+%% 5-sentence formula for systems papers:
+%% 1. The problem (concrete, with a number if possible)
+%% 2. Why existing systems fail to solve it
+%% 3. Key insight + high-level design approach
+%% 4. Evaluation setup: workload(s), baseline(s), scale
+%% 5. Headline result
+
+[1. Concrete problem statement.] [2. Why existing systems fail.] [3. Key insight:
+we observe that X, which enables our design to do Y.] [4. We implement \sysname
+in N lines of C/Go/Rust and evaluate it on [workload] against [baseline] on a
+[N-node cluster].] [5. \sysname achieves [Nx] improvement over [baseline] on
+[benchmark], while reducing [overhead] by [Y\%].]
+\end{abstract}
+
+%% ============================================================
+%% CCS Concepts and Keywords (required for camera-ready; optional for submission)
+%% ============================================================
+%% Generate at: https://dl.acm.org/ccs
+%\begin{CCSXML}
+%<ccs2012>
+%   <concept>
+%       <concept_id>10011007.10011006.10011008</concept_id>
+%       <concept_desc>Software and its engineering~General programming languages</concept_desc>
+%       <concept_significance>500</concept_significance>
+%   </concept>
+%</ccs2012>
+%\end{CCSXML}
+%\ccsdesc[500]{Software and its engineering~General programming languages}
+%\keywords{keyword1, keyword2, keyword3}
+
+\maketitle
+
+%% ============================================================
+\section{Introduction}
+%% ============================================================
+
+%% Opening scenario: a concrete, relatable situation where existing systems fail.
+%% Include a number. "Consider a [system] serving [N] [operations]. When [event],
+%% [consequence] — a [Nx] increase over normal [metric]."
+
+[Opening scenario with concrete numbers showing existing systems fail.]
+
+%% The fundamental challenge: why the problem is hard structurally.
+[The challenge: why existing approaches fall short. What is the root cause?]
+
+%% The key insight (explicit sentence).
+\textbf{Key insight.} We observe that [one sentence insight that makes your
+design possible]. This insight enables [high-level design description].
+
+%% Brief design overview.
+We design and implement \sysname, [one-sentence description of what it is and
+what it does]. [Point to design section: §\ref{sec:design} describes the design.]
+
+%% Contribution bullets (3–5, specific and falsifiable).
+This paper makes the following contributions:
+\begin{itemize}
+  \item We identify [problem/observation] and show that [evidence] (\S\ref{sec:motivation}).
+  \item We design \sysname, which achieves [goal] by [mechanism] (\S\ref{sec:design}).
+  \item We implement \sysname in [N]k lines of [language] (\S\ref{sec:impl}).
+  \item We show \sysname achieves [Nx] improvement over [baseline] on [benchmark]
+        across [scale] (\S\ref{sec:eval}).
+\end{itemize}
+
+%% Evaluation summary.
+We evaluate \sysname on [workloads] against [baselines] on a [N-node cluster].
+\sysname achieves [headline result 1] and [headline result 2].
+
+%% Paper organization.
+\S\ref{sec:motivation} presents a motivating measurement study.
+\S\ref{sec:design} describes the design of \sysname.
+\S\ref{sec:impl} describes the implementation.
+\S\ref{sec:eval} presents our evaluation.
+\S\ref{sec:related} discusses related work.
+\S\ref{sec:conclusion} concludes.
+
+
+%% ============================================================
+\section{Motivation}
+\label{sec:motivation}
+%% ============================================================
+
+%% This section must:
+%% 1. Show existing systems fail on a concrete workload (with measurement graphs)
+%% 2. Explain WHY they fail structurally
+%% 3. Connect the failure to your key insight
+
+\subsection{The Problem in Practice}
+
+[Describe the concrete scenario. Include Figure~\ref{fig:motivation} showing the
+measured failure of existing systems.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/motivation.pdf}
+  \caption{[Existing system X] under [workload Y]: [metric] degrades from
+           [A] to [B] when [condition], exceeding the [SLO] for [Z\%] of requests.}
+  \label{fig:motivation}
+\end{figure}
+
+\subsection{Why Existing Systems Fall Short}
+
+[Explain the structural reason existing systems fail—not just that they are slow,
+but WHY their design cannot avoid this problem.]
+
+\subsection{Key Insight}
+
+[Restate the insight clearly. Connect it to the failure mode described above.]
+
+
+%% ============================================================
+\section{Design}
+\label{sec:design}
+%% ============================================================
+
+%% State design goals and non-goals up front.
+\sysname is designed to achieve the following goals:
+\begin{enumerate}
+  \item \textbf{Goal 1.} [Specific, measurable goal]
+  \item \textbf{Goal 2.} [Specific, measurable goal]
+  \item \textbf{Goal 3.} [Specific, measurable goal]
+\end{enumerate}
+
+\sysname does \emph{not} aim to [non-goal 1] or [non-goal 2].
+
+\subsection{Overview}
+
+[High-level architecture description with Figure~\ref{fig:arch}.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/architecture.pdf}
+  \caption{\sysname architecture. [Component A] handles [responsibility X];
+           [Component B] manages [responsibility Y].
+           Shaded components are new; unshaded are existing infrastructure.}
+  \label{fig:arch}
+\end{figure}
+
+\subsection{Component A}
+\label{sec:design:component-a}
+
+[Detail Component A. Explain its interface, invariants, and key decisions.
+Discuss important trade-offs made.]
+
+\subsection{Component B}
+\label{sec:design:component-b}
+
+[Detail Component B.]
+
+\subsection{Correctness}
+\label{sec:design:correctness}
+
+[For systems with strong correctness requirements, argue or sketch proof of
+key safety/liveness properties. For engineering systems, discuss failure handling.]
+
+
+%% ============================================================
+\section{Implementation}
+\label{sec:impl}
+%% ============================================================
+
+We implement \sysname in [language], comprising approximately [N] lines of code.
+[System] runs on [OS, kernel version].
+
+\paragraph{[Key implementation aspect 1.]}
+[Describe it concisely. Mention specific files, modules, or kernel interfaces
+if relevant.]
+
+\paragraph{[Key implementation aspect 2.]}
+[Describe it.]
+
+\paragraph{Limitations of the current implementation.}
+[Be honest about what's prototype-quality vs. production-ready.]
+
+
+%% ============================================================
+\section{Evaluation}
+\label{sec:eval}
+%% ============================================================
+
+%% Every claim from §1 contribution bullets must have a corresponding experiment.
+
+\subsection{Experimental Setup}
+
+\paragraph{Testbed.}
+[CPU model, cores, NUMA topology; Memory capacity and speed; Storage (NVMe/HDD,
+model, capacity); Network (speed, topology); OS and kernel version.]
+
+\paragraph{Baselines.}
+We compare \sysname against:
+\begin{itemize}
+  \item \textbf{[Baseline 1]} [version]: [brief description and why it is the right comparison]
+  \item \textbf{[Baseline 2]} [version]: [brief description]
+\end{itemize}
+
+\paragraph{Workloads.}
+[Describe each workload used: benchmark name, configuration, parameters.]
+
+\subsection{Main Results}
+\label{sec:eval:main}
+
+%% State the claim before showing the evidence.
+\textbf{Claim:} \sysname achieves [Nx] higher throughput than [baseline] on [workload].
+
+[Describe Figure~\ref{fig:main-result}. Tell the reader what to observe and why
+it demonstrates the claim: "The blue line (\sysname) stays below [X~µs] even at
+[Y~Mops/s], while [Baseline] exceeds [Z~µs] at [W~Mops/s] due to [reason]."]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/main-result.pdf}
+  \caption{Throughput vs.\ p99 latency on [workload].
+           \sysname achieves [N]$\times$ higher throughput at the [X~ms] p99 target.
+           Error bars show one standard deviation over 5 runs.}
+  \label{fig:main-result}
+\end{figure}
+
+\subsection{Scalability}
+\label{sec:eval:scale}
+
+[Show how the system scales with [cores / nodes / data size].]
+
+\subsection{Overhead}
+\label{sec:eval:overhead}
+
+[Measure \sysname's overhead on the unmodified workload / common case.]
+
+\subsection{Microbenchmarks}
+\label{sec:eval:micro}
+
+[Microbenchmarks isolating specific components. Tie each back to a claim.]
+
+\subsection{Summary}
+
+[1-2 sentence takeaway of what the evaluation demonstrates.]
+
+
+%% ============================================================
+\section{Related Work}
+\label{sec:related}
+%% ============================================================
+
+%% Organize THEMATICALLY, not paper-by-paper.
+%% Good: "A line of work [refs] handles X by Y; we differ because Z."
+%% Bad: "Smith et al. did A. Jones et al. did B."
+
+\paragraph{[Theme 1: e.g., KV stores].}
+[Group of papers doing X. How they differ from \sysname and why \sysname's
+approach is needed.]
+
+\paragraph{[Theme 2].}
+[...]
+
+\paragraph{[Theme 3].}
+[...]
+
+
+%% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%% ============================================================
+
+We present \sysname, [one sentence summary of what it is and what it achieves].
+Our key insight is that [restate insight]. \sysname achieves [headline result]
+over [baseline] on [workload].
+
+[Optional: 1-2 sentences on future work or broader implications.]
+
+
+%% ============================================================
+%% Acknowledgments (remove or anonymize for submission)
+%% ============================================================
+%\begin{acks}
+%We thank [...]
+%\end{acks}
+
+
+%% ============================================================
+%% References
+%% ============================================================
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,257 @@
+%%
+%% Starter template for ASPLOS submissions.
+%%
+%% Source: https://www.asplos-conference.org/asplos2026/cfp/
+%%
+%% Preamble is as specified by the ASPLOS 2026 CFP.
+%% Always verify against the current year's CFP before submitting.
+%%
+
+%% Use the base acmart.cls in sigplan proceedings format (10 pt default).
+%% nonacm removes ACM-related text (copyright, CCS, etc.) for submission.
+\documentclass[sigplan,nonacm]{acmart}
+
+%% Enable page numbers.
+\settopmatter{printfolios=true}
+
+%% ============================================================
+%% Packages
+%% ============================================================
+\usepackage{booktabs}    % professional tables
+\usepackage{graphicx}    % \includegraphics
+\usepackage{subcaption}  % subfigures
+\usepackage{microtype}   % better text justification
+\usepackage{xspace}      % smart spacing after macros
+%% Placeholder tracking — copy utils/fillin.sty to this directory.
+%% Use \fillin[desc], \fillcite[desc], \fillnum for unfinished values.
+%% Add \printfillinlistifany before \end{document} during drafting.
+%% Remove this line before submission.
+\usepackage{fillin}
+
+%% ============================================================
+%% Custom macros
+%% ============================================================
+\newcommand{\sysname}{SysName\xspace}   % replace with your system's name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+%% ============================================================
+\begin{document}
+
+\title{\sysname: A [Noun Phrase Capturing Your Key Contribution]}
+
+%% ASPLOS uses double-blind review. Omit author names for submission.
+%% Restore for camera-ready.
+\author{Author One}
+\affiliation{\institution{Anonymous Institution}\country{}}
+\author{Author Two}
+\affiliation{\institution{Anonymous Institution}\country{}}
+
+\begin{abstract}
+%% 5-sentence formula:
+%% 1. The problem (concrete, with a number if possible)
+%% 2. Why existing systems fail to solve it
+%% 3. Key insight + high-level design approach
+%% 4. Evaluation setup: workload(s), baseline(s), scale
+%% 5. Headline result
+
+[1. Concrete problem statement.] [2. Why existing systems/hardware fail.]
+[3. Key insight: we observe that X, enabling our design to do Y.] [4. We
+implement \sysname in N~kLoC and evaluate it on [workload] against [baseline]
+on [platform].] [5. \sysname achieves [Nx] improvement over [baseline] while
+reducing [overhead] by [Y\%].]
+\end{abstract}
+
+\maketitle   % must come after the abstract (per ASPLOS CFP)
+
+%% ============================================================
+\section{Introduction}
+%% ============================================================
+
+%% Opening scenario: concrete situation where existing systems/hardware fail.
+[Opening scenario with quantitative failure evidence.]
+
+%% Fundamental challenge.
+[Why existing approaches are structurally insufficient.]
+
+%% Key insight (explicit sentence).
+\textbf{Key insight.}
+We observe that [one-sentence insight]. This enables [high-level design].
+
+%% Brief system overview.
+We design \sysname, [one-sentence description]. \S\ref{sec:design} describes it.
+
+%% Contribution bullets (3–5).
+This paper makes the following contributions:
+\begin{itemize}
+  \item We identify [observation] and show [evidence] (\S\ref{sec:motivation}).
+  \item We design \sysname, achieving [goal] via [mechanism] (\S\ref{sec:design}).
+  \item We implement \sysname in [N]k~LoC (\S\ref{sec:impl}).
+  \item We show [Nx] improvement over [baseline] on [benchmark] (\S\ref{sec:eval}).
+\end{itemize}
+
+\S\ref{sec:motivation} motivates the work.
+\S\ref{sec:design} describes the design.
+\S\ref{sec:impl} covers implementation.
+\S\ref{sec:eval} presents evaluation.
+\S\ref{sec:related} discusses related work.
+\S\ref{sec:conclusion} concludes.
+
+
+%% ============================================================
+\section{Motivation}
+\label{sec:motivation}
+%% ============================================================
+%% ASPLOS papers often span hardware-software co-design.
+%% Show the failure both at the application level AND at the
+%% hardware/microarchitectural level where relevant.
+
+\subsection{The Problem in Practice}
+
+[Concrete scenario. Figure~\ref{fig:motivation} shows measured failure.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/motivation.pdf}
+  \caption{[Existing system/hardware] under [workload]: [metric] at [N\%]
+           utilization. [Observation that motivates the work.]}
+  \label{fig:motivation}
+\end{figure}
+
+\subsection{Why Existing Approaches Fall Short}
+
+[Structural explanation. For architecture papers: include microarchitectural
+analysis (e.g., cache miss rates, bandwidth bottlenecks, pipeline stalls).]
+
+\subsection{Key Insight}
+
+[Restate insight, connected to the evidence above.]
+
+
+%% ============================================================
+\section{Design}
+\label{sec:design}
+%% ============================================================
+
+\sysname is designed to achieve:
+\begin{enumerate}
+  \item \textbf{Goal 1.} [Specific, measurable.]
+  \item \textbf{Goal 2.} [Specific, measurable.]
+\end{enumerate}
+\sysname does \emph{not} target [non-goal].
+
+\subsection{Overview}
+
+[High-level description. Figure~\ref{fig:arch} shows the architecture.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/architecture.pdf}
+  \caption{\sysname architecture. [Component A] handles [X]; [Component B]
+           manages [Y]. Shaded = new; unshaded = existing.}
+  \label{fig:arch}
+\end{figure}
+
+\subsection{Hardware Interface}
+%% If applicable: describe the hardware primitives or ISA extensions used.
+[Hardware interface or assumptions. Remove this subsection if purely software.]
+
+\subsection{Software Design}
+[Software components and their interactions.]
+
+\subsection{Correctness and Safety}
+[Argue correctness properties relevant to your system.]
+
+
+%% ============================================================
+\section{Implementation}
+\label{sec:impl}
+%% ============================================================
+
+We implement \sysname in [language], comprising [N]k~lines of code.
+[Platform: OS, kernel version, hardware, FPGA, simulator, etc.]
+
+\paragraph{[Key aspect 1.]} [Description.]
+\paragraph{[Key aspect 2.]} [Description.]
+
+%% If using simulation:
+\paragraph{Simulation methodology.}
+[Simulator name, version, validated against real hardware how?]
+
+
+%% ============================================================
+\section{Evaluation}
+\label{sec:eval}
+%% ============================================================
+
+\subsection{Experimental Setup}
+
+\paragraph{Platform.}
+[CPU (model, GHz, cores, NUMA); Memory; Storage; Network; OS + kernel.
+If simulation: simulator, modeled hardware configuration.]
+
+\paragraph{Baselines.}
+\begin{itemize}
+  \item \textbf{[Baseline 1]} [version]: [why it is the right comparison.]
+  \item \textbf{[Baseline 2]} [version]: [description.]
+\end{itemize}
+
+\paragraph{Workloads.}
+[Benchmark suite and configuration. ASPLOS commonly uses: SPEC CPU 2017, PARSEC,
+SPLASH-3, YCSB, TPC-C, Graph500, or domain-specific workloads.]
+
+\subsection{Main Results}
+
+\textbf{Claim:} \sysname achieves [Nx] improvement over [baseline] on [workload].
+
+[Describe Figure~\ref{fig:main}. State what to observe and why.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/main.pdf}
+  \caption{[Metric] comparison on [workload]. \sysname achieves [Nx] over
+           [baseline]. Error bars = one standard deviation over 5 runs.}
+  \label{fig:main}
+\end{figure}
+
+\subsection{Sensitivity Analysis}
+%% ASPLOS reviewers expect sensitivity to key parameters.
+[How does performance vary with [parameter 1], [parameter 2]?]
+
+\subsection{Overhead}
+[Area overhead / power overhead / performance overhead on non-target workloads.]
+
+\subsection{Microbenchmarks}
+[Component-level benchmarks, each tied to a specific claim.]
+
+
+%% ============================================================
+\section{Related Work}
+\label{sec:related}
+%% ============================================================
+%% Organize THEMATICALLY.
+
+\paragraph{[Theme 1].} [...]
+\paragraph{[Theme 2].} [...]
+
+
+%% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%% ============================================================
+
+We present \sysname, [one-sentence summary]. Our key insight is that [restate].
+\sysname achieves [headline result] over [baseline] on [workload].
+
+
+%% Acknowledgments — remove or anonymize for submission
+%\begin{acks}
+%We thank [...]
+%\end{acks}
+
+%% Use the ACM bibliography style (per ASPLOS CFP)
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

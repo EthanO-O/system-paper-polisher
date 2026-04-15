@@ -1,0 +1,252 @@
+%%
+%% Starter template for SOSP submissions.
+%%
+%% Source: https://sigops.org/s/conferences/sosp/2026/cfp.html
+%%
+%% Preamble is as specified by the SOSP 2026 CFP.
+%% Always verify against the current year's CFP before submitting.
+%%
+
+\documentclass[sigplan,10pt]{acmart}
+\renewcommand\footnotetextcopyrightpermission[1]{}   % suppress copyright block
+\settopmatter{printfolios=true}                       % show page numbers
+
+%% ============================================================
+%% Packages
+%% ============================================================
+\usepackage{booktabs}    % professional tables (\toprule, \midrule, \bottomrule)
+\usepackage{graphicx}    % \includegraphics
+\usepackage{subcaption}  % subfigures
+\usepackage{microtype}   % better text justification
+\usepackage{xspace}      % smart spacing after macros
+%% Placeholder tracking — copy utils/fillin.sty to this directory.
+%% Use \fillin[desc], \fillcite[desc], \fillnum for unfinished values.
+%% Add \printfillinlistifany before \end{document} during drafting.
+%% Remove this line before submission.
+\usepackage{fillin}
+
+%% ============================================================
+%% Custom macros
+%% ============================================================
+\newcommand{\sysname}{SysName\xspace}   % replace with your system's name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+%% ============================================================
+\begin{document}
+
+\title{\sysname: A [Noun Phrase Capturing Your Key Contribution]}
+
+%% For blind submission: leave author blocks in but anonymized,
+%% or follow the current CFP guidance on anonymization.
+\author{Author One}
+\affiliation{\institution{Anonymous Institution}\country{}}
+\author{Author Two}
+\affiliation{\institution{Anonymous Institution}\country{}}
+
+\begin{abstract}
+%% 5-sentence formula:
+%% 1. The problem (concrete, with a number if possible)
+%% 2. Why existing systems fail to solve it
+%% 3. Key insight + high-level design approach
+%% 4. Evaluation setup: workload(s), baseline(s), scale
+%% 5. Headline result
+
+[1. Concrete problem statement.] [2. Why existing systems fail.] [3. Key insight:
+we observe that X, which enables our design to do Y.] [4. We implement \sysname
+in N~kLoC of [language] and evaluate it on [workload] against [baseline] on a
+[N-node cluster].] [5. \sysname achieves [Nx] improvement over [baseline] on
+[benchmark], while reducing [overhead] by [Y\%].]
+\end{abstract}
+
+\maketitle
+\pagestyle{plain}   % required by SOSP CFP
+
+%% ============================================================
+\section{Introduction}
+%% ============================================================
+
+%% Opening scenario: concrete situation where existing systems fail (with numbers).
+[Opening scenario.]
+
+%% Fundamental challenge: why existing approaches are structurally insufficient.
+[The challenge.]
+
+%% State the key insight explicitly.
+\textbf{Key insight.}
+We observe that [one-sentence insight]. This enables [high-level design approach].
+
+%% Brief design overview.
+We design \sysname, [one-sentence description]. \S\ref{sec:design} describes the
+design in detail.
+
+%% Contribution bullets (3–5, specific and falsifiable).
+This paper makes the following contributions:
+\begin{itemize}
+  \item We identify [observation] and show that [evidence] (\S\ref{sec:motivation}).
+  \item We design \sysname, achieving [goal] via [mechanism] (\S\ref{sec:design}).
+  \item We implement \sysname in [N]k~LoC of [language] (\S\ref{sec:impl}).
+  \item We show [Nx] improvement over [baseline] on [benchmark] (\S\ref{sec:eval}).
+\end{itemize}
+
+\S\ref{sec:motivation} presents a motivating study.
+\S\ref{sec:design} describes the design.
+\S\ref{sec:impl} covers implementation.
+\S\ref{sec:eval} presents evaluation.
+\S\ref{sec:related} discusses related work.
+\S\ref{sec:conclusion} concludes.
+
+
+%% ============================================================
+\section{Motivation}
+\label{sec:motivation}
+%% ============================================================
+%% Must: (1) measure existing systems failing on a real workload,
+%%       (2) explain WHY they fail structurally,
+%%       (3) connect the failure to your key insight.
+
+\subsection{The Problem in Practice}
+
+[Concrete scenario. Figure~\ref{fig:motivation} shows the measured failure.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/motivation.pdf}
+  \caption{[Existing system] under [workload]: [metric] rises from [A] to [B]
+           when [condition], violating the [X~ms] SLO for [Z\%] of requests.}
+  \label{fig:motivation}
+\end{figure}
+
+\subsection{Why Existing Systems Fall Short}
+
+[Structural explanation—not just "they are slow" but WHY their design cannot
+avoid this problem.]
+
+\subsection{Key Insight}
+
+[Restate the insight. Connect it to the failure mode above.]
+
+
+%% ============================================================
+\section{Design}
+\label{sec:design}
+%% ============================================================
+
+\sysname is designed to achieve:
+\begin{enumerate}
+  \item \textbf{Goal 1.} [Specific, measurable goal.]
+  \item \textbf{Goal 2.} [Specific, measurable goal.]
+\end{enumerate}
+\sysname does \emph{not} aim to [non-goal].
+
+\subsection{Overview}
+
+[High-level description with Figure~\ref{fig:arch}.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/architecture.pdf}
+  \caption{\sysname architecture. [Component A] handles [X]; [Component B]
+           manages [Y]. Shaded = new; unshaded = existing infrastructure.}
+  \label{fig:arch}
+\end{figure}
+
+\subsection{Component A}
+[Detail, interface, invariants, key trade-offs.]
+
+\subsection{Component B}
+[Detail.]
+
+\subsection{Correctness}
+[Argue key safety/liveness properties, or discuss failure handling.]
+
+
+%% ============================================================
+\section{Implementation}
+\label{sec:impl}
+%% ============================================================
+
+We implement \sysname in [language], comprising approximately [N]k lines of code,
+running on [OS, kernel version].
+
+\paragraph{[Key aspect 1.]} [Description.]
+\paragraph{[Key aspect 2.]} [Description.]
+
+
+%% ============================================================
+\section{Evaluation}
+\label{sec:eval}
+%% ============================================================
+%% Every claim from §1 bullets must have a corresponding experiment.
+
+\subsection{Experimental Setup}
+
+\paragraph{Testbed.}
+[CPU model, cores, NUMA; Memory; Storage (NVMe/HDD); Network; OS + kernel.]
+
+\paragraph{Baselines.}
+\begin{itemize}
+  \item \textbf{[Baseline 1]} [version]: [why it is the right comparison.]
+  \item \textbf{[Baseline 2]} [version]: [description.]
+\end{itemize}
+
+\paragraph{Workloads.}
+[Workload name, configuration, and parameters for each benchmark used.]
+
+\subsection{Main Results}
+
+\textbf{Claim:} \sysname achieves [Nx] higher throughput than [baseline] on [workload].
+
+[Describe Figure~\ref{fig:main}. Tell the reader what to observe and why it
+demonstrates the claim.]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/main.pdf}
+  \caption{Throughput vs.\ p99 latency on [workload]. \sysname achieves
+           [Nx] higher throughput at the [X~ms] p99 target.
+           Error bars = one standard deviation over 5 runs.}
+  \label{fig:main}
+\end{figure}
+
+\subsection{Scalability}
+[Throughput/speedup vs.\ number of cores or nodes.]
+
+\subsection{Overhead}
+[Overhead on the unmodified workload / common case, as \% above baseline.]
+
+\subsection{Microbenchmarks}
+[Component-level benchmarks, each tied back to a specific claim.]
+
+
+%% ============================================================
+\section{Related Work}
+\label{sec:related}
+%% ============================================================
+%% Organize THEMATICALLY, not paper-by-paper.
+
+\paragraph{[Theme 1: e.g., distributed KV stores].}
+[Group of papers doing X by Y. How \sysname differs and why.]
+
+\paragraph{[Theme 2].} [...]
+
+
+%% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%% ============================================================
+
+We present \sysname, [one-sentence summary]. Our key insight is that [restate].
+\sysname achieves [headline result] over [baseline] on [workload].
+
+
+%% Acknowledgments — remove or anonymize for submission
+%\begin{acks}
+%We thank [...]
+%\end{acks}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

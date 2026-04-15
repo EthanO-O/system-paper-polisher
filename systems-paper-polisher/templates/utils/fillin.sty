@@ -1,0 +1,108 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fillin}[2025/06/15 v1.0 Numbered fill-in markers with automatic list generation]
+
+% Required packages
+\RequirePackage{xcolor}
+\RequirePackage{totcount}
+\RequirePackage{refcount}
+
+% Counter for fill-in items
+\newcounter{fillincount}
+\regtotcounter{fillincount}
+
+% Storage for all fill-in items list
+\newcommand{\fillinlist}{}
+
+% Main \fillin command
+% Usage: \fillin[description] or \fillin (defaults to "TO BE FILLED")
+\newcommand{\fillin}[1][TO BE FILLED]{%
+  \stepcounter{fillincount}%
+  % Add to the list
+  \protected@edef\fillinlist{\fillinlist 
+    Item \arabic{fillincount}: #1 (Page \thepage)\\}%
+  % Display the marker
+  \textcolor{red}{\textbf{[\arabic{fillincount}:?]}}%
+}
+
+% Command to generate the list of all fill-in items
+\newcommand{\printfillinlist}{%
+  \section*{List of Items to be Completed}
+  Total of \total{fillincount} item(s) need to be filled:\\[0.5em]
+  \fillinlist
+}
+
+% Alternative command name for consistency
+\newcommand{\showfillinlist}{\printfillinlist}
+
+% Command to get the total number of fill-in items
+\newcommand{\totalfillins}{\total{fillincount}}
+
+% Command to check if there are any fill-in items
+\newcommand{\ifanyfillins}{%
+  \ifnum\totvalue{fillincount}>0
+}
+
+% Conditional display of the list (only if there are fill-ins)
+\newcommand{\printfillinlistifany}{%
+  \ifanyfillins
+    \printfillinlist
+  \else
+    \textcolor{green}{\textbf{All items have been completed!}}
+  \fi
+}
+
+% Style variants
+% Simple style: yellow question mark with optional note
+\newcommand{\fillinsimple}[1][]{%
+  \stepcounter{fillincount}%
+  \protected@edef\fillinlist{\fillinlist 
+    Item \arabic{fillincount}: #1 (Page \thepage)\\}%
+  \textcolor{orange}{\textbf{[?#1]}}%
+}
+
+% Citation placeholder: blue [cite] marker
+\newcommand{\fillcite}[1][]{%
+  \stepcounter{fillincount}%
+  \protected@edef\fillinlist{\fillinlist 
+    Item \arabic{fillincount}: Citation needed: #1 (Page \thepage)\\}%
+  \textcolor{blue}{\textbf{[cite#1]}}%
+}
+
+% Boxed style: red question mark in a box
+\newcommand{\fillinboxed}{%
+  \renewcommand{\fillin}[1][TO BE FILLED]{%
+    \stepcounter{fillincount}%
+    \protected@edef\fillinlist{\fillinlist 
+      Item \arabic{fillincount}: ##1 (Page \thepage)\\}%
+    \textcolor{red}{\fbox{\textbf{?}}}%
+  }%
+}
+
+% Highlighted style: yellow background with red text
+\newcommand{\fillinhighlight}{%
+  \renewcommand{\fillin}[1][TO BE FILLED]{%
+    \stepcounter{fillincount}%
+    \protected@edef\fillinlist{\fillinlist 
+      Item \arabic{fillincount}: ##1 (Page \thepage)\\}%
+    \colorbox{yellow}{\textcolor{red}{\textbf{[\arabic{fillincount}:?]}}}%
+  }%
+}
+
+% Reset the fill-in counter and list
+\newcommand{\resetfillins}{%
+  \setcounter{fillincount}{0}%
+  \renewcommand{\fillinlist}{}%
+}
+
+% Command to insert numbered placeholder without description
+% Usage: \fillnum - shows [N:?] where N is the current counter value
+\newcommand{\fillnum}{%
+  \stepcounter{fillincount}%
+  % Add to the list with generic description
+  \protected@edef\fillinlist{\fillinlist 
+    Item \arabic{fillincount}: Fill in required (Page \thepage)\\}%
+  % Display the marker
+  \textcolor{red}{\textbf{[\arabic{fillincount}:?]}}%
+}
+
+\endinput
