@@ -75,6 +75,23 @@ Scan the entire paper (or section) for:
 - Are there contractions? (don't → do not, can't → cannot)
 - Are there parenthetical asides that should be footnotes or removed?
 
+### Step 6: AI Writing Anti-Pattern Check
+
+These patterns are common when AI assists with writing and make prose feel machine-generated. See `references/systems-writing-principles.md` §3.8 for details and examples.
+
+Scan for:
+- **Em dashes** — overused by AI, should be commas or subordinate clauses
+- **Explanatory colons mid-sentence** — "X: Y" should be "X because Y" or two sentences
+- **Informal connectors** — "so", "but", "plus", "also" connecting independent clauses
+- **Semicolons in body prose** — replace with sentence breaks
+- **Dense nested relative clauses** — split into separate sentences
+- **Consecutive short sentences** (3+ in a row) — consolidate into compound sentences
+- **Comma-heavy sentences** (3+ interruptions between subject and verb) — restructure
+- **Defensive "not X but Y" framing** — state contributions positively
+- **Engineering-level language in design sections** — API calls, parameter defaults, code patterns belong in implementation, not design
+
+These are all STYLE-MAJOR when they create a pattern (multiple instances), STYLE-MINOR for isolated occurrences.
+
 ## Output Format
 
 ```markdown

@@ -257,6 +257,22 @@ Every systems paper evaluation should answer:
 - CDF plots for latency distributions
 - Caption should explain what to observe and why it matters
 
+**Figure Quality Requirements**:
+- **Vector format** (PDF, EPS, or TikZ) for architecture diagrams and plots — never raster for line art
+- **Grayscale-legible** — verify by printing or converting to grayscale; do not rely on color alone to distinguish data series
+- **Colorblind-safe** — use Okabe-Ito or Paul Tol palette for multi-series plots
+- **Self-contained captions** — a reader should understand the figure without consulting the main text
+- **No title inside the figure** — the caption serves that function
+- **Error bars or confidence intervals** for throughput measurements
+- **Latency as percentiles** (p50, p99, p999) — never mean only
+
+**Architecture Figure** (the most important figure in the paper):
+- Show all major components and their relationships
+- Distinguish data flow and control flow with different arrow styles
+- Labels must match terminology in the text exactly
+- Should be understandable in 30 seconds
+- Tools: draw.io, TikZ, Inkscape (avoid PowerPoint)
+
 ### Checklist
 - [ ] Does every introduction claim have a supporting experiment?
 - [ ] Are baselines strong, recent, and fairly configured?

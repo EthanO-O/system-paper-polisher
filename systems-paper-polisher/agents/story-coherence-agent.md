@@ -113,6 +113,17 @@ For each issue:
 [Brief justification]
 ```
 
+## Per-Paragraph Quick Check
+
+When reviewing individual design paragraphs, ask these four questions:
+
+1. Does this paragraph reinforce the system's core purpose?
+2. Does this mechanism serve the goals stated in the introduction?
+3. Does this remove a bottleneck or solve a problem that the reader already knows about?
+4. If none of the above — does this paragraph belong here, or should it move to implementation/appendix?
+
+If a paragraph fails all four questions, it is likely an orphan component.
+
 ## What NOT to Do
 
 - Do not evaluate the technical soundness of the system design — that's the reviewer-agent's job
