@@ -89,9 +89,8 @@ The `references/` directory contains writing guidance adapted for systems papers
 ## Acknowledgments
 
 This skill synthesizes ideas from:
-- [systems-paper-writing](https://github.com/) — Systems-specific writing principles and templates
-- [Research-Paper-Writing-Skills](https://github.com/) — Section-by-section academic writing guidance
-- [academic-research-skills](https://github.com/) — Multi-agent review architecture
+- [Research-Paper-Writing-Skills](https://github.com/Master-cai/Research-Paper-Writing-Skills) — Section-by-section academic writing guidance
+- [academic-research-skills](https://github.com/Imbad0202/academic-research-skills) — Multi-agent review architecture
 
 ## License
 
